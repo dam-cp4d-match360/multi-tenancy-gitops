@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ibm-watson-discovery-operator
+  name: ibm-mdm-operator
   annotations:
-    argocd.argoproj.io/sync-wave: "255"
+    argocd.argoproj.io/sync-wave: "251"
   labels:
     gitops.tier.group: ibm-cloudpak
     gitops.tier.layer: services
@@ -26,16 +26,14 @@ spec:
     helm:
       parameters:
         - name: metadata.name
-          value: ibm-cpd-wkc
+          value: ibm-mdm-operator
         - name: spec.channel
-          value: v2.3
+          value: v1.5
         - name: spec.installPlanApproval
           value: Automatic
         - name: spec.name
-          value: ibm-cpd-wkc
+          value: ibm-mdm
         - name: spec.source
-          value: ibm-cpd-wkc-operator-catalog
+          value: ibm-mdm-operator-catalog
         - name: spec.sourceNamespace
           value: openshift-marketplace
-        - name: spec.startingCSV
-          value: ibm-cpd-wkc.v1.5.3
